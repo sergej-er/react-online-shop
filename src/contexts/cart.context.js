@@ -1,29 +1,47 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState } from 'react';
+
+const addCartItem = (cartItems, itemToAdd) => {
+  const existingItem = cartItems.find((item) => item.id === itemToAdd.id);
+  if (existingItem) {
+    return cartItems.map((item) =>
+      item.id === itemToAdd.id ? { ...item, quantity: item.quantity + 1 } : item
+    );
+  }
+
+  return [...cartItems, { ...itemToAdd, quantity: 1 }];
+};
 
 export const CartContext = createContext({
   cartItems: [],
-  setCartItems: () => null,
+  addItemToCart: () => null,
+  total: null,
+  updateTotal: () => null,
   isOpen: null,
   setOpen: () => null,
 });
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState();
+  const [cartItems, setCartItems] = useState([]);
   const [isOpen, setOpen] = useState(false);
-  const value = {
-    cartItems,
-    setCartItems,
-    isOpen,
-    setOpen,
+  const [total, setTotal] = useState(0);
+
+  const addItemToCart = (itemToAdd) => {
+    setCartItems(addCartItem(cartItems, itemToAdd));
+    updateTotal(itemToAdd);
   };
 
-  // useEffect(() => {
-  //   const unsubscribe = () => {
-  //     setProducts(shopData);
-  //   };
+  const updateTotal = (item) => {
+    setTotal(total + item.price);
+  };
 
-  //   return unsubscribe;
-  // }, []);
+  const value = {
+    cartItems,
+    addItemToCart,
+    isOpen,
+    setOpen,
+    total,
+    updateTotal,
+  };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

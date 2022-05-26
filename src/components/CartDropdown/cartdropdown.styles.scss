@@ -17,10 +17,14 @@
   }
 
   .cart-items {
-    height: 240px;
+    height: 350px;
     display: flex;
     flex-direction: column;
     overflow: auto;
+  }
+
+  .total {
+    margin-top: 0.5rem;
   }
 
   button {
