@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState } from 'react';
 import { shopData } from '../data/shop-data';
 
 export const ProductsContext = createContext({
@@ -12,14 +12,6 @@ export const ProductsProvider = ({ children }) => {
     products,
     setProducts,
   };
-
-  // useEffect(() => {
-  //   const unsubscribe = () => {
-  //     setProducts(shopData);
-  //   };
-
-  //   return unsubscribe;
-  // }, []);
 
   return (
     <ProductsContext.Provider value={value}>
