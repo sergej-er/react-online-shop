@@ -60,5 +60,5 @@ export const LoginContainer = styled.div`
 `;
 export const OutletContainer = styled.div`
   height: 100%;
-  padding-top: 2rem;
+  padding-top: 2.5rem;
 `;

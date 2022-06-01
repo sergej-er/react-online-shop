@@ -7,7 +7,8 @@ export const CategoryPreviewContainer = styled.div`
   margin-bottom: 30px;
 `;
 
-export const Title = styled.h2`
+export const Title = styled.span`
+  font-size: 2rem;
   text-transform: uppercase;
 `;
 

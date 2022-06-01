@@ -13,18 +13,24 @@ import {
   NavLink,
   OutletContainer,
 } from './navigation.styles';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
   const { isOpen } = useContext(CartContext);
+  const navigate = useNavigate();
+
+  const logOutHandler = async () => {
+    await signOutUser();
+    navigate('/signin');
+  };
 
   return (
     <Fragment>
       <NavigationContainer>
         <NavLinksContainer>
           <NavLink to='/shop'>Shop</NavLink>
-          <NavLink to='/shop'>About</NavLink>
+          <NavLink to='/about'>About</NavLink>
         </NavLinksContainer>
         <NavLink to='/'>
           <Logo />
@@ -32,7 +38,7 @@ const Navigation = () => {
         </NavLink>
         <LoginContainer>
           {currentUser ? (
-            <NavLink as='span' onClick={signOutUser}>
+            <NavLink as='span' onClick={logOutHandler}>
               Logout
             </NavLink>
           ) : (
