@@ -1,26 +1,16 @@
-import React, { Fragment } from 'react';
-import './forminput.styles.scss';
+import React from 'react';
+import { Group, Input, InputLabel } from './forminput.styles';
 
 const FormInput = ({ id, label, ...otherProps }) => {
   return (
-    <div className='group'>
-      <input
-        id={id}
-        className='form-input'
-        {...otherProps}
-        autoComplete='off'
-      />
+    <Group>
+      <Input id={id} {...otherProps} autoComplete='off' />
       {label && (
-        <label
-          htmlFor={id}
-          className={`${
-            otherProps.value.length ? 'shrink' : ''
-          } form-input-label`}
-        >
+        <InputLabel htmlFor={id} shrink={otherProps.value.length}>
           {label}
-        </label>
+        </InputLabel>
       )}
-    </div>
+    </Group>
   );
 };
 

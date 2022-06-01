@@ -1,9 +1,11 @@
-.products-container {
+import styled from 'styled-components';
+
+export const CategoryContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  column-gap: 0.75rem;
-  row-gap: 3rem;
-  padding: 0 2rem;
+  column-gap: 2rem;
+  row-gap: 2rem;
+  margin-bottom: 2rem;
 
   @media (max-width: 1280px) {
     grid-template-columns: repeat(3, 1fr);
@@ -16,4 +18,8 @@
   @media (max-width: 480px) {
     grid-template-columns: repeat(1, 1fr);
   }
-}
+`;
+
+export const Title = styled.h2`
+  text-transform: uppercase;
+`;

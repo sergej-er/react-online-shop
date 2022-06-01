@@ -1,16 +1,17 @@
-html {
-  height: 100%;
-}
-
 * {
   box-sizing: border-box;
 }
 
+#root {
+  height: calc(100vh - 4rem);
+}
+
 body {
+  height: 100%;
   padding: 1.5rem 2.5rem;
   margin: 0;
-  font-family: 'Noto Sans', 'Roboto', 'Segoe UI', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Poppins', 'Roboto', 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 

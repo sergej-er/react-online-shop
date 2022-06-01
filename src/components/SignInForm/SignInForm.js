@@ -2,12 +2,17 @@ import React from 'react';
 import { useState } from 'react';
 import {
   signInEmailPassword,
-  createUserDocumentFromAuth,
   signInWithGooglePopup,
 } from '../../utils/firebase';
-import Button from '../Button/Button';
+import Button, { BUTTON_TYPES } from '../Button/Button';
 import FormInput from '../FormInput/FormInput';
-import './signinform.styles.scss';
+import {
+  ButtonGroup,
+  SignInFormContainer,
+  Subtitle,
+  Form,
+  Hint,
+} from './signinform.styles';
 
 const defaultFormFields = {
   email: '',
@@ -53,10 +58,10 @@ const SignInForm = () => {
   };
 
   return (
-    <div className='signin-form-container'>
+    <SignInFormContainer>
       <h2>Already have an account?</h2>
-      <span className='form-title'>Sign in using your email and password</span>
-      <form className='signin-form' action='submit' onSubmit={handleSubmit}>
+      <Subtitle>Sign in using your email and password</Subtitle>
+      <Form action='submit' onSubmit={handleSubmit}>
         <FormInput
           id='email'
           type='email'
@@ -73,17 +78,21 @@ const SignInForm = () => {
           onChange={handleChange}
           required
         />
-        <div className='button-group'>
+        <ButtonGroup>
           <Button type='submit'>Sign In</Button>
-          <Button type='button' buttonType='google' onClick={signInWithGoogle}>
+          <Button
+            type='button'
+            buttonType={BUTTON_TYPES.google}
+            onClick={signInWithGoogle}
+          >
             Use Google
           </Button>
-        </div>
-        <p>
+        </ButtonGroup>
+        <Hint>
           <a href='/signup'>Don't have an account? Sign up here</a>
-        </p>
-      </form>
-    </div>
+        </Hint>
+      </Form>
+    </SignInFormContainer>
   );
 };
 

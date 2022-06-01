@@ -1,16 +1,23 @@
-import React, { useContext } from 'react';
-import './carticon.styles.scss';
-import { ReactComponent as CartSvg } from '../../assets/cart-icon.svg';
+import React, { Fragment, useContext } from 'react';
 import { CartContext } from '../../contexts/cart.context';
+import {
+  CartIconContainer,
+  ItemCount,
+  Icon,
+  Backdrop,
+} from './carticon.styles';
 
 const CartIcon = () => {
   const { isOpen, setOpen, cartItems } = useContext(CartContext);
 
   return (
-    <div className='cart-icon-container' onClick={() => setOpen(!isOpen)}>
-      <CartSvg className='cart-icon' />
-      <span className='item-count'>{cartItems.length}</span>
-    </div>
+    <Fragment>
+      {isOpen && <Backdrop onClick={() => setOpen(false)} />}
+      <CartIconContainer onClick={() => setOpen(!isOpen)}>
+        <Icon />
+        <ItemCount>{cartItems.length}</ItemCount>
+      </CartIconContainer>
+    </Fragment>
   );
 };
 
