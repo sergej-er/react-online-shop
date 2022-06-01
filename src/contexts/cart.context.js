@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 
 const addCartItem = (cartItems, itemToAdd) => {
   const existingItem = cartItems.find((item) => item.id === itemToAdd.id);
